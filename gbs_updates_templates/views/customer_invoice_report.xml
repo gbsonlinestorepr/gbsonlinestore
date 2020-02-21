@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- QWeb Reports -->
+        <report
+                id="account.account_invoices"
+                model="account.invoice"
+                string="Invoices"
+                report_type="qweb-pdf"
+                name="gbs_updates_templates.report_invoice_with_payments"
+                file="gbs_updates_templates.report_invoice_with_payments"
+                menu="True"
+                paperformat=""
+        />
+
+    </data>
+</odoo>

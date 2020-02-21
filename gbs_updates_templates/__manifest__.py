@@ -1,0 +1,25 @@
+{
+    'name': 'GBS Updates Templates',
+    'summary': 'Templates For GBS',
+    'category': 'Extra Tools',
+    'version': '1.1',
+    'author': 'Victoria Beltré',
+    'website': 'www.icq24.com',
+    'license': 'LGPL-3',
+    'description': 'GBS payment and payroll templates',
+    'depends': ['base', 'account', 'account_check_printing', 'hr_payroll', 'l10n_pr_hr_payroll', 'purchase', 'stock',
+                'vit_dotmatrix', 'gbs_updates'],
+    'data': [
+        'views/assets_payroll_check.xml',
+        'views/check_payment_report.xml',
+        'views/check_payment_template.xml',
+        'views/customer_invoice_report.xml',
+        'views/customer_invoice_template.xml',
+        'views/dot_matrix.xml',
+        'views/templates_delivery.xml',
+        'views/report_trialbalance.xml',
+        'views/res_company_view.xml',
+        'views/purchase_order_templates.xml',
+    ],
+    'auto_install': False
+}

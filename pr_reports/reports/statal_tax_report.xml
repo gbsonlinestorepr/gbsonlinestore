@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <report
+                id="statal_tax_summarice_report"
+                model="report.account.statal.tax"
+                string="Statal Tax"
+                report_type="qweb-pdf"
+                name="pr_reports.statal_tax_summarice"
+                file="pr_reports.statal_tax_summarice"
+                menu="False"
+        />
+
+        <report
+                id="statal_tax_detailed_report"
+                model="report.account.statal.tax"
+                string="Statal Tax"
+                report_type="qweb-pdf"
+                name="pr_reports.statal_tax_detailed"
+                file="pr_reports.statal_tax_detailed"
+                menu="False"
+        />
+
+        <template id="statal_tax_summarice">
+            <t t-call="web.html_container">
+                <t t-call="web.internal_layout">
+                    <div class="page">
+                        <h2>Tax Report Summary</h2>
+                        <div class="row mt32">
+                            <div>
+                                <div class="col-xs-4">
+                                    <strong>Date from :</strong>
+                                    <span t-esc="docs.start_date"/>
+                                </div>
+                                <div class="col-xs-4">
+                                    <strong>Date to :</strong>
+                                    <span t-esc="docs.end_date"/>
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <h3>Accrual Basis</h3>
+                        <br/>
+                        <t t-foreach="docs.get_amounts()" t-as="amounts">
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <t t-esc="amounts.get('tax')"/>
+                                        </th>
+                                        <th>Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Taxable amount invoiced</td>
+                                        <td>
+                                            <t t-esc="amounts.get('invoice_taxed')"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tax Invoiced</td>
+                                        <td>
+                                            <t t-esc="amounts.get('tax_colected')"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </t>
+                        <t t-value="docs.get_untax_amount()" t-set="amounts"/>
+                        <table class="table table-condensed" t-if="amounts">
+                            <thead>
+                                <tr>
+                                    <th>Excepmt from:<t t-foreach="docs.tax_ids" t-as="tax_id"><t t-esc="tax_id.name"/>,</t>
+                                    </th>
+                                    <th>
+                                        Amount
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Excempt amount collected
+                                    </td>
+                                    <td>
+                                        <t t-esc="amounts.get('invoiced')"/>
+                                    </td>
+                                </tr>
+
+                                    <tr>
+                                        <td>Taxable amount invoiced</td>
+                                        <td>
+                                            lala
+                                        </td>
+                                    </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </t>
+            </t>
+
+        </template>
+
+        <template id="statal_tax_detailed">
+            <t t-call="web.html_container">
+                <t t-call="web.internal_layout">
+                    <div class="page">
+                        <h2>Tax Report Detailed</h2>
+                        <div class="row mt32">
+                            <div>
+                                <div class="col-xs-4">
+                                    <strong>Date from :</strong>
+                                    <span t-esc="docs.start_date"/>
+                                </div>
+                                <div class="col-xs-4">
+                                    <strong>Date to :</strong>
+                                    <span t-esc="docs.end_date"/>
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <t t-foreach="docs.tax_ids" t-as="tax_id">
+                            <t t-value="docs.get_invoices_summarice(tax_id)" t-set="invoice_tax_ids"/>
+                            <table class="table" t-if="invoice_tax_ids">
+                                <thead>
+                                    <tr>
+                                        <th colspan="5" class="text-center">
+                                            <span t-esc="tax_id.name"/>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>Invoice</th>
+                                        <th>Date</th>
+                                        <th>Tax</th>
+                                        <th>Untaxed</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <span t-set="amount_total" t-value="0.0"/>
+                                <span t-set="base" t-value="0.0"/>
+                                <span t-set="invoice_amount_total" t-value="0.0"/>
+                                <tbody>
+                                    <t t-foreach="invoice_tax_ids" t-as="invoice_tax">
+                                        <tr>
+                                            <td>
+                                                <span t-field="invoice_tax.invoice_id"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="invoice_tax.invoice_id.date_invoice"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="'{0:,.2f}'.format(invoice_tax.amount_total)"/>
+                                                <span t-set="amount_total"
+                                                      t-value="amount_total + invoice_tax.amount_total"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="'{0:,.2f}'.format(invoice_tax.base)"/>
+                                                <span t-set="base" t-value="base + invoice_tax.base"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="'{0:,.2f}'.format(invoice_tax.invoice_id.amount_total)"/>
+                                                <span t-set="invoice_amount_total"
+                                                      t-value="invoice_amount_total + invoice_tax.invoice_id.amount_total"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th colspan="2" class="text-right">Total : </th>
+                                        <th><span t-esc="'{0:,.2f}'.format(amount_total)"/></th>
+                                        <th><span t-esc="'{0:,.2f}'.format(base)"/></th>
+                                        <th><span t-esc="'{0:,.2f}'.format(invoice_amount_total)"/></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </t>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</openerp>

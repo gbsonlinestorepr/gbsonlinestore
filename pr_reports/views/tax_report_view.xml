@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!--<menuitem id="menu_municipal_tax" name="Municipal Tax"-->
+                  <!--parent="account.menu_finance_legal_statement" action="action_municipal_tax"/>-->
+
+        <menuitem id="menu_statal_tax" name="Tax Report"
+                  parent="account.menu_finance_legal_statement" action="action_statal_tax"/>
+
+    </data>
+</openerp>

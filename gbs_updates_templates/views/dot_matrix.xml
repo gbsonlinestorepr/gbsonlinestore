@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="vit_dotmatrix.template_dotmatrix_invoice" model="mail.template">
+            <field name="body_html">
+                <![CDATA[
+${'Gourmet Business Solutions'.rjust(30)}                 ${'INVOICE'.rjust(10)}
+${object.company_id.street.rjust(25).ljust(20)}           ${'Invoice Number:'.rjust(14)}${object.number}
+${object.company_id.street2.rjust(25).ljust(20)}          ${'Invoice Date:'.rjust(10)}${(object.date_invoice)}
+
+${object.company_id.city.rjust(12).ljust(8)}${' PR'.ljust(2)}${object.company_id.zip.rjust(8).ljust(20)}
+${object.company_id.phone.ljust(10)}
+
+    ${'Bill To :'.rjust(10)}                        ${'Ship To :'.rjust(20)}
+  ${object.partner_id.name[:17].ljust(20) if object.partner_id.name else ''.ljust(20)}  ${object.partner_shipping_id.display_name.rjust(30) if object.partner_shipping_id.display_name else ''.rjust(30)}
+  ${object.partner_id.street.ljust(20) if object.partner_id.street else ''.ljust(20)}   ${object.partner_shipping_id.street.rjust(40)if object.partner_shipping_id.street else ''.ljust(20)}
+  ${object.partner_id.city.ljust(20) if object.partner_id.city else ''.ljust(20)}       ${object.partner_shipping_id.street2.rjust(40)if object.partner_shipping_id.street2 else ''.ljust(20)}
+  ${object.partner_id.zip.ljust(20)if object.partner_id.zip else ''.ljust(20)}          ${object.partner_shipping_id.city.rjust(30)if object.partner_shipping_id.city else ''.ljust(20)}
+
+
+${'Due Date:'.rjust(10)}${(object.date_due)if object.date_due else ''.rjust(10)}
+${'Sales Rep:'.rjust(5)} ${object.user_id.name}${'Payment Term:'.rjust(20)} ${object.payment_term_id.name.ljust(20) if object.payment_term_id else ''.ljust(20)}
+
+
+ ${'Qty'.rjust(6)} ${'Item'.rjust(10)}${'Description'.rjust(20)}  ${'Unit Price'.rjust(16)} ${'Amount'.rjust(13)}
+${''.rjust(80,'-')}
+
+% for l in object.invoice_line_ids:
+${"{:4,.0f}".format(l.quantity).rjust(5)}${l.product_id.name[:14].rjust(18)}${l.name[:18].rjust(23)}${"{:4,.0f}".format(l.price_unit).rjust(12)} ${"{:4,.2f}".format(l.price_subtotal).rjust(15)}
+% endfor
+
+
+${''.rjust(80,'-')}
+
+${'Subtotal:'.rjust(59)} ${ "{:20,.2f}".format(object.amount_untaxed).rjust(20) }
+${'Sales Taxes:'.rjust(59)} ${ "{:20,.2f}".format(object.amount_tax).rjust(20) }
+${'Total Invoice Amount:'.rjust(59)} ${ "{:20,.2f}".format(object.amount_total).rjust(20) }
+${'Payment/Credit Applied:'.rjust(59)} ${ "{:20,.2f}".format(object.amount_total-object.residual).rjust(20)}
+
+${''.rjust(20,'-')}
+${'Name/Signature:'.rjust(19)}
+${'Amount Due:'.rjust(59)} ${ "{:20,.2f}".format(object.amount_total) if object.amount_total else ''.rjust(59)}
+]]>
+            </field>
+        </record>
+        <record id="vit_dotmatrix.template_dotmatrix_so" model="mail.template">
+            <field name="body_html">
+                <![CDATA[
+${object.company_id.name.rjust(30)}
+${object.company_id.street.rjust(25).ljust(20)}
+${object.company_id.street2.rjust(25).ljust(20)}
+${object.company_id.city.rjust(12).ljust(8)}${' PR'.ljust(2)}${object.company_id.zip.rjust(8).ljust(20)}
+
+Invoicing Address:
+${object.partner_invoice_id.name.rjust(20) or ''.rjust(30)}${object.partner_invoice_id.name.rjust(20)if object.partner_invoice_id.name else ''.rjust(20)}${object.partner_id.name.rjust(33) or ''.rjust(33)}
+${object.partner_invoice_id.street.rjust(20)if object.partner_invoice_id.street else ''.rjust(20)}${object.partner_invoice_id.street.rjust(40)if object.partner_invoice_id.street else ''.rjust(40)}
+${object.partner_invoice_id.street2.rjust(20)if object.partner_invoice_id.street2 else ''.rjust(20)}${object.partner_invoice_id.city.rjust(35)if object.partner_invoice_id.city else ''.rjust(35)}${object.partner_invoice_id.zip.rjust(9)if object.partner_invoice_id.zip else ''.rjust(9)}
+${object.partner_invoice_id.city.rjust(15)if object.partner_invoice_id.city else ''.rjust(15)}${object.partner_invoice_id.zip.rjust(12)if object.partner_invoice_id.zip else ''.rjust(12)}
+${object.partner_invoice_id.phone.rjust(30)if object.partner_invoice_id.phone else ''.rjust(30)}
+${object.partner_invoice_id.mobile.rjust(30)if object.partner_invoice_id.mobile else ''.rjust(30)}
+${object.partner_invoice_id.state_id.name.rjust(30)if object.partner_invoice_id.state_id else ''.rjust(30)}
+${object.partner_invoice_id.zip.rjust(30)if object.partner_invoice_id.zip else ''.rjust(30)}
+${','.join(object.partner_invoice_id.category_id.mapped('name')).rjust(30)if object.partner_invoice_id.category_id else ''.rjust(30)}
+
+
+Shipping Address
+${object.partner_shipping_id.display_name.ljust(20) if object.partner_shipping_id.display_name else ''.ljust(20)}
+${object.partner_shipping_id.street.rjust(20)if object.partner_shipping_id.street else ''.rjust(20)}
+${object.partner_shipping_id.street2.rjust(30)if object.partner_shipping_id.street2 else ''.rjust(30)}
+${object.partner_shipping_id.city.rjust(10)if object.partner_shipping_id.city else ''.rjust(10)}
+${object.partner_shipping_id.zip.rjust(8)if object.partner_shipping_id.zip else ''.rjust(8)}           ${'Order#'.rjust(45)}${object.name.rjust(5)}
+${object.partner_shipping_id.phone.rjust(10) if object.partner_shipping_id.phone else ''.rjust(10)}${'Ordered Date:'.rjust(45)}
+                                              ${'Saleperson:'.rjust(2)} ${object.user_id.name.rjust(8) if object.user_id.name else ''.rjust(8)}
+
+
+${'Your Reference:'.rjust(20)} ${object.client_order_ref.ljust(20) if object.client_order_ref else ''.ljust(20)}${'Payment Terms:'.rjust(20)} ${object.payment_term_id.name.rjust(10) if object.payment_term_id.name else ''.rjust(10)}
+
+Products
+${''.rjust(80,'-')}
+${'Description'.ljust(25)} ${'Qty'.rjust(1)} ${'Unit Price'.rjust(13)} ${'Taxes'.rjust(14)} ${'Amount'.rjust(18)}
+${''.rjust(80,'-')}
+% for l in object.order_line:
+${l.name[:18].ljust(18)} ${"{:4,.2f}".format(l.product_uom_qty).rjust(8)}  ${"{:4,.2f}".format(l.price_unit).rjust(10)} ${','.join(map(str,l.tax_id.mapped('amount'))).rjust(18)} ${"{:4,.2f}".format(l.price_subtotal).rjust(14) }
+% endfor
+${''.rjust(80,'-')}
+
+${'Subtotal:'.rjust(59)} ${ "{:20,.0f}".format(object.amount_untaxed).rjust(20)if object.amount_untaxed else '' }
+${'Taxes:'.rjust(59)} ${ "{:20,.0f}".format(object.amount_tax).rjust(20)if object.amount_tax else ''}
+${'Total:'.rjust(59)} ${ "{:20,.0f}".format(object.amount_total).rjust(20)if object.amount_total else '' }
+
+${object.payment_term_id.note.ljust(20) if object.payment_term_id.note else ''.ljust(20)}
+${object.fiscal_position_id.note.ljust(20) if object.fiscal_position_id.note else ''.ljust(20)}
+
+]]>
+            </field>
+        </record>
+    </data>
+</openerp>

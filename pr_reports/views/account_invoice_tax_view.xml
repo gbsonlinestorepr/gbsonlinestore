@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_invoice_tax_tree" model="ir.ui.view">
+            <field name="name">account.invoice.tax.tree</field>
+            <field name="model">account.invoice.tax</field>
+            <field name="inherit_id" ref="account.view_invoice_tax_tree"/>
+            <field name="arch" type="xml">
+                <field name="manual" position="before">
+                    <field name="invoice_id"/>
+                    <field name="invoice_partner_id"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_invoice_tax_form" model="ir.ui.view">
+            <field name="name">account.invoice.tax.form</field>
+            <field name="model">account.invoice.tax</field>
+            <field name="inherit_id" ref="account.view_invoice_tax_form"/>
+            <field name="arch" type="xml">
+
+                <field name="name" position="before">
+                    <field name="invoice_id"/>
+                    <field name="invoice_partner_id"/>
+                </field>
+
+            </field>
+        </record>
+
+        <record id="account_invoice_tax_pivot" model="ir.ui.view">
+            <field name="name">account.invoice.tax.pivot</field>
+            <field name="model">account.invoice.tax</field>
+            <field name="arch" type="xml">
+                <pivot string="Invoice Tax">
+                    <field name="invoice_date" type="col"/>
+                    <field name="amount" type="measure" />
+                    <field name="base" type="measure" string="Taxable Amount"/>
+                </pivot>
+            </field>
+        </record>
+
+        <record id="action_account_invoice_tax_pivot" model="ir.actions.act_window">
+            <field name="name">Tax Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.invoice.tax</field>
+            <field name="view_mode">pivot</field>
+            <field name="view_id" ref="account_invoice_tax_pivot"/>
+            <field name="domain">[('invoice_state','!=','draft')]</field>
+            <field name="context">{'group_by':['tax_id','invoice_id']}</field>
+        </record>
+
+        <menuitem id="menu_account_invoice_tax_pivot" name="Tax"
+                  parent="account.account_reports_management_menu" action="action_account_invoice_tax_pivot"/>
+
+    </data>
+</openerp>

@@ -1,0 +1,364 @@
+<odoo>
+    <template id="snippet_shop_categories" name="Shop Categories">
+        <section class="snippet_shop_categories">
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-lg-2 col-md-4 col-sm-6 pr-0 hud-card">
+                        <div class="col-md-12 bg-light my-3 py-3">
+                            <h4>
+                                <a href="/shop/category/2">Category</a>
+                            </h4>
+                            <div class="hud-card-divider"/>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id molestie mi.</p>
+                            <img class="img-responsive" src="website/static/src/img/blocks/block_features.png"
+                                 alt="Card image cap"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="place_into_bar" inherit_id="website.snippets" name="Place into bar">
+        <xpath expr="//div[@id='snippet_structure']/div[@class='o_panel_body']" position="inside">
+            <t t-snippet="website_gbs.snippet_shop_categories"
+               t-thumbnail="website/static/src/img/blocks/block_features.png"/>
+        </xpath>
+    </template>
+
+    <template id="snippet_shop_categories_opt" name="Snippet Shop Categories" inherit_id="website.snippet_options">
+        <xpath expr="//div[@data-js='background']" position="after">
+            <div data-selector=".hud-card-divider" data-js="snippet_shop_categories_options">
+                <li class="dropdown-submenu">
+                    <a href="#">Line Color</a>
+                    <ul class="dropdown-menu scroll-bar">
+                        <li data-select-class="hud-card-divider-pink">
+                            <a>Pink</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-lightpink">
+                            <a>LightPink</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-hotpink">
+                            <a>HotPink</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-deeppink">
+                            <a>DeepPink</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-palevioletred">
+                            <a>PaleVioletRed</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-mediumvioletred">
+                            <a>MediumVioletRed</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-lightsalmon">
+                            <a>LightSalmon</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-salmon">
+                            <a>Salmon</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-darksalmon">
+                            <a>DarkSalmon</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-lightcoral">
+                            <a>LightCoral</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-indianred">
+                            <a>IndianRed</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-crimson">
+                            <a>Crimson</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-firebrick">
+                            <a>FireBrick</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-darkred">
+                            <a>DarkRed</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-red">
+                            <a>Red</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-orangered">
+                            <a>OrangeRed</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-tomato">
+                            <a>Tomato</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-coral">
+                            <a>Coral</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-darkorange">
+                            <a>DarkOrange</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-orange">
+                            <a>Orange</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-yellow">
+                            <a>Yellow</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-lightyellow">
+                            <a>LightYellow</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-lemonchiffon">
+                            <a>LemonChiffon</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-papayawhip">
+                            <a>PapayaWhip</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-moccasin">
+                            <a>Moccasin</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-peachpuff">
+                            <a>PeachPuff</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-palegoldenrod">
+                            <a>PaleGoldenrod</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-khaki">
+                            <a>Khaki</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-darkkhaki">
+                            <a>DarkKhaki</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-gold">
+                            <a>Gold</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-cornsilk">
+                            <a>Cornsilk</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-blanchedalmond">
+                            <a>BlanchedAlmond</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-bisque">
+                            <a>Bisque</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-navajowhite">
+                            <a>NavajoWhite</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-wheat">
+                            <a>Wheat</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-burlywood">
+                            <a>BurlyWood</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-tan">
+                            <a>Tan</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-rosybrown">
+                            <a>RosyBrown</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-sandybrown">
+                            <a>SandyBrown</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-goldenrod">
+                            <a>Goldenrod</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-darkgoldenrod">
+                            <a>DarkGoldenrod</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-peru">
+                            <a>Peru</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-chocolate">
+                            <a>Chocolate</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-saddlebrown">
+                            <a>SaddleBrown</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-sienna">
+                            <a>Sienna</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-brown">
+                            <a>Brown</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-maroon">
+                            <a>Maroon</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-darkolivegreen">
+                            <a>DarkOliveGreen</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-olive">
+                            <a>Olive</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-olivedrab">
+                            <a>OliveDrab</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-yellowgreen">
+                            <a>YellowGreen</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-limegreen">
+                            <a>LimeGreen</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-lime">
+                            <a>Lime</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-lawngreen">
+                            <a>LawnGreen</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-chartreuse">
+                            <a>Chartreuse</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-greenyellow">
+                            <a>GreenYellow</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-springgreen">
+                            <a>SpringGreen</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-lightgreen">
+                            <a>LightGreen</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-palegreen">
+                            <a>PaleGreen</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-darkseagreen">
+                            <a>DarkSeaGreen</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-mediumaquamarine">
+                            <a>MediumAquamarine</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-mediumseagreen">
+                            <a>MediumSeaGreen</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-seagreen">
+                            <a>SeaGreen</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-forestgreen">
+                            <a>ForestGreen</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-green">
+                            <a>Green</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-darkgreen">
+                            <a>DarkGreen</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-aqua">
+                            <a>Aqua</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-cyan">
+                            <a>Cyan</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-lightcyan">
+                            <a>LightCyan</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-paleturquoise">
+                            <a>PaleTurquoise</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-aquamarine">
+                            <a>Aquamarine</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-turquoise">
+                            <a>Turquoise</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-mediumturquoise">
+                            <a>MediumTurquoise</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-darkturquoise">
+                            <a>DarkTurquoise</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-lightseagreen">
+                            <a>LightSeaGreen</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-cadetblue">
+                            <a>CadetBlue</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-darkcyan">
+                            <a>DarkCyan</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-teal">
+                            <a>Teal</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-lightsteelblue">
+                            <a>LightSteelBlue</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-powderblue">
+                            <a>PowderBlue</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-lightblue">
+                            <a>LightBlue</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-skyblue">
+                            <a>SkyBlue</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-lightskyblue">
+                            <a>LightSkyBlue</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-deepskyblue">
+                            <a>DeepSkyBlue</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-dodgerblue">
+                            <a>DodgerBlue</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-cornflowerblue">
+                            <a>CornflowerBlue</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-steelblue">
+                            <a>SteelBlue</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-royalblue">
+                            <a>RoyalBlue</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-blue">
+                            <a>Blue</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-mediumblue">
+                            <a>MediumBlue</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-darkblue">
+                            <a>DarkBlue</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-navy">
+                            <a>Navy</a>
+                        </li>
+                        <li data-select-class="hud-card-divider-midnightblue">
+                            <a>MidnightBlue</a>
+                        </li>
+                    </ul>
+                </li>
+            </div>
+        </xpath>
+    </template>
+
+
+    <template id="snippet_shop_items" name="Shop Items">
+        <section class="snippet_shop_items">
+            <div class="container text-center">
+                <div class="row">
+                    <div><span>Title</span></div>
+                    <div class="card col-lg-2 col-md-3 col-sd-6 card-size-fix shop-item-gbs shop-product-item">
+                        <div class="card-img">
+                            <span itemprop="image" data-oe-type="image">
+                                <img class="img-responsive img-gbs" src="/web/image/website.s_reference_demo_image_1"/>
+                            </span>
+                        </div>
+                        <section class="card-body">
+                            <h6>
+                                Monin Almond (Orgeat) Syrup 1L
+                            </h6>
+                            <div class="row no-gutters">
+                                <div class="text-bg col-sm-12">
+                                    <b>
+                                        <span class="oe_currency_value">9.50</span>
+                                    </b>
+                                </div>
+                                <div class="col-12">
+                                    <a class="btn btn-default btn-card" data-oe-field="arch"
+                                       href="#">
+                                        See Details
+                                    </a>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="place_shop_items_into_bar" inherit_id="website.snippets" name="Shop items bar">
+        <xpath expr="//div[@id='snippet_structure']/div[@class='o_panel_body']" position="inside">
+            <t t-snippet="website_gbs.snippet_shop_items"
+               t-thumbnail="website/static/src/img/blocks/block_features.png"/>
+        </xpath>
+    </template>
+
+
+</odoo>

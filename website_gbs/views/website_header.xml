@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="header" inherit_id="portal.frontend_layout">
+        <xpath expr="//header//div[hasclass('navbar')]" position="attributes">
+            <attribute name="class">navbar navbar-default bg-black</attribute>
+        </xpath>
+
+        <xpath expr="//header//div[hasclass('container')]" position="attributes">
+            <attribute name="class"></attribute>
+        </xpath>
+
+        <xpath expr="//div[@class='navbar-header']" position="attributes">
+            <attribute name="class">
+                navbar-header
+            </attribute>
+        </xpath>
+
+        <xpath expr="//a[hasclass('navbar-brand')]" position="replace">
+            <a class="navbar-brand" href="#">
+                <div class="img-brand">
+                    <img t-attf-src="data:image/jpeg;base64,#{res_company.logo}" class="img-responsive p-3"
+                         t-att-alt="'Logo of %s' % res_company.name" t-att-title="res_company.name"/>
+                </div>
+            </a>
+        </xpath>
+
+        <!--<xpath expr="//div[hasclass('navbar-header')]" position="after">-->
+            <!--<div class="row pull-left mt-2 col-md-9 col-lg-6">-->
+                <!--<div class="input-group pull-right">-->
+
+                    <!--<form t-att-action="keep('/shop'+ ('/category/'+slug(category)) if category else None, search=0) if keep else '/shop'"-->
+                          <!--method="get" t-att-class="search_class">-->
+                        <!--<t t-if="attrib_values">-->
+                            <!--<t t-foreach="attrib_values" t-as="a">-->
+                                <!--<input type="hidden" name="attrib" t-att-value="'%s-%s' % (a[0], a[1])" />-->
+                            <!--</t>-->
+                        <!--</t>-->
+                        <!--<t t-call="website_gbs.website_search_box_gbs" />-->
+                    <!--</form>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</xpath>-->
+        <xpath expr="//div[hasclass('navbar-header')]" position="after">
+            <div class="row pull-left mt-2 col-md-3 col-lg-3">
+                <div class="input-group pull-right">
+
+                    <form t-att-action="keep('/shop'+ ('/category/'+slug(category)) if category else None, search=0) if keep else '/shop'"
+                          method="get" t-att-class="search_class">
+                        <t t-if="attrib_values">
+                            <t t-foreach="attrib_values" t-as="a">
+                                <input type="hidden" name="attrib" t-att-value="'%s-%s' % (a[0], a[1])"/>
+                            </t>
+                        </t>
+                        <t t-call="website_gbs.website_search_box_gbs"/>
+                    </form>
+                </div>
+            </div>
+        </xpath>
+
+        <!--<xpath expr="//div[@class='collapse navbar-collapse navbar-top-collapse']" position="attributes">-->
+            <!--<attribute name="class">-->
+                <!--collapse navbar-collapse navbar-top-collapse col-md-5 col-xs-12 pull-right mt-2-->
+            <!--</attribute>-->
+        <!--</xpath>-->
+
+        <xpath expr="//div[@class='collapse navbar-collapse navbar-top-collapse']" position="attributes">
+            <attribute name="class">
+                collapse navbar-collapse navbar-top-collapse col-md-5 col-xs-12 pull-right mt-2
+            </attribute>
+        </xpath>
+
+    </template>
+
+
+    <!--Navbar Menu-->
+    <template id="frontend_layout_modified" inherit_id="portal.frontend_layout">
+        <xpath expr="//ul[@id='top_menu']" position="after">
+            <div class="input-margin">
+                Publicidad para Mostrar
+                <!--navbar-nav navbar-right" style="margin-left: 30%;-->
+            </div>
+
+        </xpath>
+    </template>
+    <!--******************************Footer***************-->
+    <template id="footer_default_modified" inherit_id="website.footer_default">
+        <xpath expr="//div[@class='row']" position="inside">
+            <div class="col-md-4 col-lg-5 col-lg-offset-1">
+                <h4>
+                    <span>General Terms and Conditions / Service Policies</span>
+                    <small> - <a href="/">Terms and Conditions</a></small>
+                </h4>
+                <div>
+                    <p>
+                        These terms of service ("Terms", "Agreement") are an agreement between the website ("Website operator", "us", "we" or "our") and you ("User", "you" or "your").
+                        This Agreement sets forth the general terms and conditions of your use of this website and any of its products or services (collectively, "Website" or "Services").
+                    </p>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="website_search_box_modified" inherit_id="website.website_search_box">
+        <xpath expr="//div[@class='input-group']" position="attributes">
+            <attribute name="class">input-group-gbs</attribute>
+            <attribute name="style">width:100%;</attribute>
+        </xpath>
+    </template>
+
+</odoo>

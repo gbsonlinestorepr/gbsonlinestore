@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="tax_10_sale" model="account.tax.template">
+            <field name="chart_template_id" ref="pr_gourmet_chart_template"/>
+            <field name="sequence">1</field>
+            <field name="name">10%</field>
+            <field name="description">10%</field>
+            <field name="amount">10</field>
+            <field name="amount_type">percent</field>
+            <field name="type_tax_use">sale</field>
+            <field eval="0" name="price_include"/>
+        </record>
+
+        <record id="tax_04_sale" model="account.tax.template">
+            <field name="chart_template_id" ref="pr_gourmet_chart_template"/>
+            <field name="sequence">2</field>
+            <field name="name">4%</field>
+            <field name="description">4%</field>
+            <field name="amount">4</field>
+            <field name="amount_type">percent</field>
+            <field name="type_tax_use">sale</field>
+            <field eval="0" name="price_include"/>
+        </record>
+
+        <record id="tax_01_sale" model="account.tax.template">
+            <field name="chart_template_id" ref="pr_gourmet_chart_template"/>
+            <field name="sequence">3</field>
+            <field name="name">1%</field>
+            <field name="description">1%</field>
+            <field name="amount">1</field>
+            <field name="amount_type">percent</field>
+            <field name="type_tax_use">sale</field>
+            <field eval="0" name="price_include"/>
+        </record>
+
+    </data>
+</odoo>

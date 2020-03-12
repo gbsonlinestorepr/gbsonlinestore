@@ -220,7 +220,7 @@
                                                             <div class="col-12">
                                                                 <a class="btn btn-default btn-card"
                                                                    t-att-href="keep('/shop/product/%s' % slug(product), page=(pager['page']['num'] if pager['page']['num']&gt;1 else None))">
-                                                                    See Details
+                                                                    See Detail
                                                                 </a>
                                                             </div>
                                                         </div>

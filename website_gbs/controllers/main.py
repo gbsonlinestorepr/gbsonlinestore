@@ -9,11 +9,15 @@ from odoo.tools.pycompat import izip
 class WebsiteSale(WebsiteSale):
 
     def get_attribute_value_ids(self, product):
+        print ("--------------------", product)
         res = super(WebsiteSale, self).get_attribute_value_ids(product)
         variant_ids = [r[0] for r in res]
         for r, variant in izip(res, request.env['product.product'].sudo().browse(variant_ids)):
+             print ("KKKKKKKKKKKKKK", r)
              for i in r:
+                 print ("OOOOOOOOOOOOOOOOOO",i)
                  if type(i) == dict :
+                     print ("****************")
                      i.update({'virtual_available': variant.qty_available})
         return res
 

@@ -15,11 +15,22 @@ class WebsiteSale(WebsiteSale):
         res = super(WebsiteSale, self).get_attribute_value_ids(product)
         variant_ids = [r[0] for r in res]
         for r, variant in izip(res, request.env['product.product'].sudo().browse(variant_ids)):
-             print ("KKKKKKKKKKKKKK", r)
-             for i in r:
-                 _logger.info("----------------------." + str(i))
-                 if type(i) == dict :
-                     print ("****************")
-                     i.update({'virtual_available': variant.qty_available})
+            r.extend([{
+                'virtual_available': variant.qty_available,
+                'product_type': variant.type,
+                'inventory_availability': variant.inventory_availability,
+                'available_threshold': variant.available_threshold,
+                'custom_message': variant.custom_message,
+                'product_template': variant.product_tmpl_id.id,
+                'cart_qty': variant.cart_qty,
+                'uom_name': variant.uom_id.name,
+            }])
+        _logger.info("----------------------." + str(res))
+        '''print ("KKKKKKKKKKKKKK", r)
+            for i in r:
+                _logger.info("----------------------." + str(i))
+                if type(i) == dict :
+                    print ("****************")
+                    i.update({'virtual_available': variant.qty_available})'''
         return res
 

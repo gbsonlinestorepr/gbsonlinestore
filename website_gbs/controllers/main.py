@@ -11,7 +11,6 @@ from odoo.tools.pycompat import izip
 class WebsiteSale(WebsiteSale):
 
     def get_attribute_value_ids(self, product):
-        _logger.info('sdddddddddddddddddddddddddd.')
         res = super(WebsiteSale, self).get_attribute_value_ids(product)
         variant_ids = [r[0] for r in res]
         for r, variant in izip(res, request.env['product.product'].sudo().browse(variant_ids)):
@@ -25,7 +24,6 @@ class WebsiteSale(WebsiteSale):
                 'cart_qty': variant.cart_qty,
                 'uom_name': variant.uom_id.name,
             }])
-        _logger.info("----------------------." + str(res))
         '''print ("KKKKKKKKKKKKKK", r)
             for i in r:
                 _logger.info("----------------------." + str(i))

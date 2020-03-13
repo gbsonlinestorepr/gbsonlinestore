@@ -4,18 +4,20 @@
 from odoo.addons.website_sale.controllers.main import WebsiteSale
 from odoo.http import request
 from odoo.tools import ustr
+import logging
+_logger = logging.getLogger(__name__)
 from odoo.tools.pycompat import izip
 
 class WebsiteSale(WebsiteSale):
 
     def get_attribute_value_ids(self, product):
-        print ("--------------------", product)
+        _logger.info('sdddddddddddddddddddddddddd.')
         res = super(WebsiteSale, self).get_attribute_value_ids(product)
         variant_ids = [r[0] for r in res]
         for r, variant in izip(res, request.env['product.product'].sudo().browse(variant_ids)):
              print ("KKKKKKKKKKKKKK", r)
              for i in r:
-                 print ("OOOOOOOOOOOOOOOOOO",i)
+                 _logger.info("----------------------." + str(i))
                  if type(i) == dict :
                      print ("****************")
                      i.update({'virtual_available': variant.qty_available})

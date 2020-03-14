@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<odoo>
+
+        <report
+            id="action_report_deliverylabel"
+            string="Delivery Label"
+            model="stock.picking"
+            report_type="qweb-pdf"
+            name="odoowikia_gbs.report_deliverylabel"
+            file="odoowikia_gbs.report_deliverylabel"
+            menu="True"/>
+
+        <record id="action_report_deliverylabel" model="ir.actions.report">
+            <field name="paperformat_id" ref="odoowikia_gbs.paperformat_gbsg"/>
+        </record>
+
+</odoo>

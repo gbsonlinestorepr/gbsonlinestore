@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template id="odoowikia_report_delivery_label">
+                <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})" />
+
+				 <div class="header">
+                </div>
+				 <div class="footer">
+                </div>
+			<t t-call="web.external_layout">
+                <div class="page">
+                    <div class="row" >
+                        <div class="pull-right">
+                                <div t-field="o.scheduled_date" t-field-options='{"format": "MM/dd/yyyy"}'/>
+                        </div>
+                    </div>
+				<br/>
+					<div class="row" >
+                        <div class="pull-left">
+					
+				                   <div> <div class="col-xs-5" style="margin-left:-15px;font-size:15px">   FROM# </div><div class="col-xs-7" style="margin-left:-20px"><span t-field="o.company_id.name" style="font-size:15px"/> </div></div><br/>
+									  <div> <div class="col-xs-5" style="margin-left:-15px;font-size:15px">SHIP TO#</div><div class="col-xs-7" style="margin-left:-20px"> <span style="font-size:15px" t-field="o.partner_id"
+				                           t-options='{"widget": "contact", "fields": ["address", "name", "zip"], "no_marker": True}'/>
+													</div>
+								
+									</div><br/><br/><br/><br/><br/>
+									ORDER#: <span t-field="o.name" style="font-size:15px"/> <br/>
+				                     REFERENCE:  <span t-field="o.origin" style="font-size:15px"/><br/>
+									TOTAL ITEMS:  
+									<t t-set="i" t-value="int(0)"/>
+									<t t-foreach="o.move_lines" t-as="move">
+									 	<t t-set="i" t-value="move.quantity_done + i" />
+									</t>
+									<span t-esc="int(i)" style="font-size:15px"/>	
+                        </div>
+                    </div>
+			<!--<div class="row" >
+				<table border="0">
+				<tr style="padding:500px">
+                <td class="pull-left">FROM#</td>	
+                <td class="pull-left"> <span t-field="o.company_id.name" style="text-align:left;font-size:13px"/></td>
+						</tr>
+				<tr >
+				 <td class="pull-left">SHIP TO:</td>	
+                <td  class="pull-left"> <span style="text-align:left;font-size:13px" t-field="o.partner_id"
+				                           t-options='{"widget": "contact", "fields": ["address", "name", "zip"], "no_marker": True}'/></td>
+			</tr>
+				<tr>
+				 <td class="pull-left">ORDER#</td>	
+                <td class="pull-left" > <span style="text-align:left;font-size:13px" t-field="o.name" /></td>
+			</tr>
+				<tr>
+			 <td class="pull-left">Reference:</td>	
+                <td class="pull-left" >  <span style="text-align:left;font-size:13px" t-field="o.origin" /></td>
+				</tr>
+                 <tr>
+				 <td class="pull-left">Total Items: </td>	
+                <td class="pull-left" > <t t-set="i" t-value="int(0)"/>
+									<t t-foreach="o.move_lines" t-as="move">
+									 	<t t-set="i" t-value="move.quantity_done + i"/>
+									</t>
+									<span style="text-align:left;font-size:13px" t-esc="int(i)"/>	</td>
+			</tr>
+				
+				</table>
+				</div>-->
+                </div>
+			
+        	 </t>
+    </template>
+
+    <template id="report_deliverylabel">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="odoowikia_gbs.odoowikia_report_delivery_label" t-lang="o.partner_id.lang"/>
+        </t>
+    </template>
+
+</odoo>

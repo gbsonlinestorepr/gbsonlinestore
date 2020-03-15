@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-
-    <template id="odoowikia_report_delivery_label">
+	
+			<template id="custom_odoowikia">
+				<div class="header">
+				</div>
+				 <div class="article o_report_layout_clean">
+            			<t t-raw="0" />
+        		</div>
+				<div class="footer">
+				</div>
+			</template>
+		
+         <template id="odoowikia_report_delivery_label">
                 <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})" />
-
-				 <div class="header">
+				<!--<div class="header">
                 </div>
 				 <div class="footer">
-                </div>
-			<t t-call="web.external_layout">
+                </div>-->
+				
+			<t t-call="odoowikia_gbs.custom_odoowikia">
+				 
                 <div class="page">
                     <div class="row" >
                         <div class="pull-right">

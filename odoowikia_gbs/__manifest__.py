@@ -7,7 +7,7 @@
     'author': 'Divya Vyas',
     'version': '1.0',
     'description': """GBSG customization""",
-    'depends': [ 'base', 'stock'],
+    'depends': [ 'base', 'stock','sale'],
     'installable': True,
     'data': [
              'data/report_paperformat.xml',

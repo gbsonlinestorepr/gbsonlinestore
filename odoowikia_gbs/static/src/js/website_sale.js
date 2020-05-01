@@ -7,11 +7,14 @@ odoo.define('odoowikia_gbs.website_sale', function (require) {
    var rpc = require('web.rpc');
     var core = require('web.core');
     var config = require('web.config');
+    var session = require('web.session');
+
     require("website.content.zoomodoo");
     var _t = translation._t;
-t-options="{'widget': 'monetary', 'from_currency': website_sale_order.pricelist_id.currency_id, 'display_currency': website.currency_id}"
+
       $(document).on("click","#checkout_button",function(){
             var self = this;
+
             var div = $("#order_total").children().children().children().text();
                 rpc.query({
                 model: 'ir.config_parameter',
@@ -21,7 +24,7 @@ t-options="{'widget': 'monetary', 'from_currency': website_sale_order.pricelist_
                 if (result){
                     if (Number(div) < Number(result) ){
                            $( "#gbs_para").remove();
-                          var warning = _t("Warning! Minimum Purchase price should be more than ")
+                          var warning = _t("Aviso! La cantidad mínima de compra debe ser igual o mayor a")
                           $( "#checkout_button").after("<p  class='pull-right mb32 mr8'><h5 id='gbs_para' ><strong>" + warning + result +"</strong></h5></p>");
 
                           }

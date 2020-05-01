@@ -24,7 +24,7 @@ odoo.define('odoowikia_gbs.website_sale', function (require) {
                 if (result){
                     if (Number(div) < Number(result) ){
                            $( "#gbs_para").remove();
-                          var warning = _t("Aviso! La cantidad mínima de compra debe ser igual o mayor a")
+                          var warning = _t("Aviso! La cantidad mínima de compra debe ser igual o mayor a ")
                           $( "#checkout_button").after("<p  class='pull-right mb32 mr8'><h5 id='gbs_para' ><strong>" + warning + result +"</strong></h5></p>");
 
                           }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<template id="assets_frontend" name="assets" inherit_id="website.assets_frontend">
+		<xpath expr="." position="inside">
+            <script type="text/javascript" src="/odoowikia_gbs/static/src/js/website_sale.js"></script>
+		</xpath>
+	</template>
+</odoo>

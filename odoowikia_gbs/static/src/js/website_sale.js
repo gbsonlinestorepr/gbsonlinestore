@@ -16,6 +16,7 @@ odoo.define('odoowikia_gbs.website_sale', function (require) {
             var div = $("#order_total").children().children().children().text();
             var a = $("#temp-value").text();
             var domain = []
+            console.log("===========session=======",parseFloat(a), parseFloat(div))
             if (parseFloat(div) < parseFloat(a)){
                     console.log("************")
                    // $( "#gbs_para").remove();

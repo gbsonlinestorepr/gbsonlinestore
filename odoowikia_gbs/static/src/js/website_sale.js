@@ -8,34 +8,48 @@ odoo.define('odoowikia_gbs.website_sale', function (require) {
     var core = require('web.core');
     var config = require('web.config');
     var session = require('web.session');
-
     require("website.content.zoomodoo");
-    var _t = translation._t;
+    var _t = core._t;
 
-      $(document).on("click","#checkout_button",function(){
+    $(document).on("click","#checkout_button",function(){
             var self = this;
-
             var div = $("#order_total").children().children().children().text();
-                rpc.query({
-                model: 'ir.config_parameter',
-                method: 'get_param',
-                args:['shop_purchase_limit']
-            }).then(function(result){
-                if (result){
-                    if (Number(div) < Number(result) ){
-                           $( "#gbs_para").remove();
-                          var warning = _t("Aviso! La cantidad mínima de compra debe ser igual o mayor a ")
-                          $( "#checkout_button").after("<p  class='pull-right mb32 mr8'><h5 id='gbs_para' ><strong>" + warning + result +"</strong></h5></p>");
-
-                          }
-
-                    else{
-                         $( "#gbs_para").css("display","none");
-                         window.location.pathname = "/shop/checkout/";
-                      }
-
-                }
-            });
+            var a = $("#temp-value").text();
+            var domain = []
+            if (parseFloat(div) < parseFloat(a)){
+                    console.log("************")
+                   // $( "#gbs_para").remove();
+                    $( "#gbs_para").css("display","inline");
+//                    var warning = _t("Warning! Minimum Purchase price should be more than ")
+//                    $( "#checkout_button").after("<p  class='pull-right mb32 mr8' ><h5 id='gbs_para' ><strong style='font-size:18px'>" + warning + a +"</strong></h5></p>");
+            }
+            else{
+            console.log("==========zeee==",)
+            $( "#gbs_para").css("display","none");
+             window.location.pathname = "/shop/checkout/";
+            }
+//            rpc.query({
+//                model: 'ir.config_parameter',
+//                method: 'get_param',
+//                args:['shop_purchase_limit']
+//            }).then(function(result){
+//                console.log("=======result======",result)
+//                if (result){
+//                    if (div <  result ){
+//                          $( "#gbs_para").remove();
+//                          var warning = _t("Warning! Minimum Purchase price should be more than ")
+//                          console.log("warnicevdfvvvvvvng",_t(warning))
+//                          $( "#checkout_button").after(_t("<p  class='pull-right mb32 mr8' ><h5 id='gbs_para' ><strong style='font-size:18px'>" + warning + result +"</strong></h5></p>"));
+//
+//                          }
+//
+//                    else{
+//                         $( "#gbs_para").css("display","none");
+//                         window.location.pathname = "/shop/checkout/";
+//                      }
+//
+//                }
+//            });
 
 
             });

@@ -25,7 +25,7 @@ class WebsiteSale(WebsiteSale):
         shop_purchase_limit =request.env['ir.config_parameter'].sudo().get_param('shop_purchase_limit')
         print ("______________shop_purchase_limit______________", type(shop_purchase_limit) , shop_purchase_limit)
         if shop_purchase_limit:
-            values.update({'minimum_prize' : shop_purchase_limit,
+            values.update({'minimum_prize' : float(shop_purchase_limit),
                            'warning' : _("Warning! Minimum Purchase price should be more than ")})
         if access_token:
             abandoned_order = request.env['sale.order'].sudo().search([('access_token', '=', access_token)], limit=1)

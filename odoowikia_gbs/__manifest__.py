@@ -12,6 +12,9 @@
     'data': [
              'data/report_paperformat.xml',
 			 'report/delivery_label.xml',
+			'views/assets.xml',
+              'views/res_config_settings_view.xml',
+            'views/template.xml',
              'views/report.xml',
 
             ],

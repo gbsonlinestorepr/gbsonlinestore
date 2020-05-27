@@ -70,7 +70,8 @@ class picking(models.Model):
     @api.multi
     def action_cancel(self):
         res = super(picking, self).action_cancel()
-        self.printer_data=''
+        for i in self:
+            i.printer_data=''
         return res
 
 class sale(models.Model):

@@ -2,6 +2,13 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import api, fields, models, _
+from odoo.addons import decimal_precision as dp
+
+
+class PurchaseOrderLine(models.Model):
+    _inherit = "purchase.order.line"
+
+    price_unit = fields.Float(string='Unit Price', required=True, digits=dp.get_precision('Purchase Price'))
 
 
 class ProductProduct(models.Model):

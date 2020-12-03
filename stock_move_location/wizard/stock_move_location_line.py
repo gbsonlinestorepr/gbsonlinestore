@@ -133,12 +133,14 @@ class StockMoveLocationWizardLine(models.TransientModel):
         search_args = [
             ('location_id', '=', self.origin_location_id.id),
             ('product_id', '=', self.product_id.id),
+
         ]
         if self.lot_id:
             search_args.append(('lot_id', '=', self.lot_id.id))
         else:
             search_args.append(('lot_id', '=', False))
         res = self.env['stock.quant'].read_group(search_args, ['quantity'], [])
+        print ("________________res",res)
         available_qty = res[0]['quantity']
         print("^^^^^^^^available_qty^^^^^^^", available_qty, self.product_id)
 
@@ -146,16 +148,15 @@ class StockMoveLocationWizardLine(models.TransientModel):
             # if it is immediate transfer and product doesn't exist in that
             # location -> make the transfer of 0.
 
-            return 0
+            return 0 , 0
         rounding = self.product_uom_id.rounding
         available_qty_lt_move_qty = self._compare(
             available_qty, self.move_quantity, rounding) == -1
         print ("________________===",self.move_quantity ,available_qty_lt_move_qty)
         if available_qty_lt_move_qty:
             print("^^^^^^^^*********************^^^^ ^^^^^^^",self.product_id.id,available_qty)
-
+            _logger.debug("IT ---------available_qty------IS Error", available_qty)
             return 0, available_qty
         print("^^^^^^^^self.move_quantity^^^^^^^^^", self.move_quantity)
         _logger.debug("IT -----self.move_quantityError", self.move_quantity)
         return 0, self.move_quantity
-

@@ -9,7 +9,7 @@
             <field name="arch" type="xml">
 
                 <field name="company_id" position="before">
-                    <field name="gbs_average"/>
+                    <field name="gbs_average" groups="gbs_updates.group_average_id"/>
                 </field>
 
             </field>

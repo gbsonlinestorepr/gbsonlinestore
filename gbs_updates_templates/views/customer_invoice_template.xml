@@ -146,7 +146,7 @@
                                         </tr>
                                     </thead>
                                     <td class="col-xs-2 text-center">
-                                        <!--                                        <span t-field="o.customer_po"/>-->
+                                        <span t-field="o.name"/>
                                     </td>
                                     <td>
                                         <span t-field="o.user_id"/>

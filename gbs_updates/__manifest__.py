@@ -9,7 +9,8 @@
 Updates for GBS
 =======================
         """,
-    'depends': ['base', 'product', 'sale', 'stock','purchase'],
+    'depends': ['base', 'product', 'sale', 'stock',
+                'purchase', 'point_of_sale'],
     'installable': True,
     'data': [
         'security/gbs_group.xml',

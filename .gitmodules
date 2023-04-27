@@ -1,4 +1,0 @@
-[submodule "NB5055/gbsg"]
-	path = NB5055/gbsg
-	url = git@github.com:NB5055/gbsg.git
-	branch = gbsg

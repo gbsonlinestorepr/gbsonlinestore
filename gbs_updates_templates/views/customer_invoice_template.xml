@@ -1,0 +1,283 @@
+<odoo>
+    <template id="report_invoice_with_payments">
+        <t t-call="web.html_container">
+            <div class="article" id="invoice_template">
+                <div class="page" style="font-size: 12px;">
+                    <t t-foreach="docs" t-as="o">
+                        <div>
+                            <br/>
+                            <div name="header_check_info" class="header">
+                                <div class="col-xs-7 pull-left">
+                                    <b>
+                                        <span style="font-size: 25px;" t-field="o.company_id.partner_id.name"/>
+                                    </b>
+                                    <br/>
+                                    <span t-field="o.company_id.partner_id.street"/>
+                                    <t t-if="o.company_id.partner_id.street2">
+                                        <br/>
+                                        <span t-field="o.company_id.partner_id.street2"/>
+                                    </t>
+                                    <br/>
+                                    <span t-field="o.company_id.partner_id.city"/>
+                                    <br/>
+                                    <span t-field="o.company_id.partner_id.state_id"/>,
+                                    <span t-field="o.company_id.partner_id.zip"/>
+                                    <br/>
+                                    <br/>
+                                    Voice:
+                                    <span t-field="o.company_id.partner_id.phone"/>
+                                    <br/>
+                                    Fax:
+                                    <span t-field="o.company_id.partner_id.mobile"/>
+                                    <br/>
+                                </div>
+                                <div class="col-xs-5 pull-right">
+                                    <b class="inv_title col-xs-10 text-center">
+                                        INVOICE
+                                    </b>
+                                    <br/>
+                                    <div class="col-xs-12 inv_head">
+                                        <div class="col-xs-6 text-right">
+                                            <t t-if="o.state != 'draft'">
+                                                Invoice Number:
+                                                <br/>
+                                            </t>
+                                            Invoice Date:
+                                            <br/>
+                                            Quotation:
+                                            <br/>
+                                            <br/>
+                                        </div>
+                                        <div name="amount_in_words" class="col-xs-6 text-left">
+                                            <!--Invoice data-->
+                                            <b>
+                                                <t t-if="o.state != 'draft'">
+                                                    <span t-field="o.number"/>
+                                                    <br/>
+                                                </t>
+                                                <span t-field="o.date_invoice"/>
+                                                <br/>
+                                                <span class="topage" t-field="o.origin"/>
+                                                <br/>
+                                                <br/>
+                                            </b>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="row">
+                                <div class="col-xs-5 pull-left">
+                                    <table class="table table-bordered text-left">
+                                        <thead>
+                                            <tr>
+                                                <th class="thbackgrd">Bill To:</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="" style="marbackground-color:rgba(153,51,255,0.2)">
+                                                    <span t-field="o.partner_id"/>
+                                                    <br/>
+                                                    <span t-field="o.partner_id.street"/>,
+                                                    <span t-field="o.partner_id.street2"/>
+                                                    <br/>
+                                                    <span t-field="o.partner_id.city"/>,
+                                                    <span t-field="o.partner_id.state_id"/>
+                                                    <span t-field="o.partner_id.zip"/>
+                                                    <br/>
+                                                    <strong>Phone : </strong><span t-field="o.partner_id.phone"/>
+                                                    <br/>
+                                                    <strong>Mobile : </strong><span t-field="o.partner_id.mobile"/>
+                                                    <br/>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-xs-5 pull-right">
+                                    <table class="table table-bordered text-left">
+                                        <thead>
+                                            <tr>
+                                                <div class="footer">
+                                                    <span class="page"/>
+                                                    /
+                                                    <span class=" topage "/>
+                                                </div>
+                                                <th class="thbackgrd">Ship To:</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <span t-field="o.partner_shipping_id"/>
+                                                    <br/>
+                                                    <span t-field="o.partner_shipping_id.street"/>,
+                                                    <span t-field="o.partner_shipping_id.street2"/>
+                                                    <br/>
+                                                    <span t-field="o.partner_shipping_id.city"/>,
+                                                    <span t-field="o.partner_shipping_id.state_id"/>
+                                                    <span t-field="o.partner_shipping_id.zip"/>
+                                                    <br/>
+                                                    <strong>Phone : </strong><span t-field="o.partner_shipping_id.phone"/>
+                                                    <br/>
+                                                    <strong>Mobile : </strong><span t-field="o.partner_shipping_id.mobile"/>
+                                                    <br/>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="clearfix mb8"/>
+                        </div>
+                        <!--*******Body*******-->
+                        <div class="hedtemp">
+                            <!--Table 1-->
+                            <table class="table table-bordered tropy">
+                                <tr>
+                                    <thead>
+                                        <tr>
+                                            <th class="col-xs-4 thbackground">PO</th>
+                                            <th class="thbackground">Sales Rep.</th>
+                                            <th class="thbackground">Due Date</th>
+                                            <th colspan="2" class="thbackground">Payment Terms</th>
+                                        </tr>
+                                    </thead>
+                                    <td class="col-xs-2 text-center">
+                                        <span t-field="o.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="o.user_id"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="o.date_due"/>
+                                    </td>
+                                    <td colspan="2">
+                                        <span t-field="o.payment_term_id"/>
+                                    </td>
+                                </tr>
+                            </table>
+                            <!--Table 2-->
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th class="col-xs-1 thbackground">Quantity</th>
+                                        <th class="col-xs-2 thbackground">Item</th>
+                                        <th class="col-xs-6 thbackground">Description</th>
+                                        <th class="col-xs-1 thbackground">Unit Price</th>
+                                        <th class="col-xs-2 thbackground">Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="o.invoice_line_ids" t-as="inv">
+                                        <td class="col-xs-2 text-center">
+                                            <span t-esc="'%.f'% inv.quantity"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="inv.product_id"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="inv.name"/>
+                                        </td>
+                                        <td class="col-xs-2 text-center">
+                                            <span t-esc="'%.2f'% inv.price_unit"/>
+                                        </td>
+                                        <td class="col-xs-2 text-right">
+                                            <span t-field="inv.price_subtotal"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!--%%%%%%%% Total Prices %%%%%%%%%%-->
+                        <div class="border_box">
+                            <table class="table">
+                                <tfoot>
+                                    <tr>
+                                        <tr class="top-border">
+                                            <td style="border-bottom:1px solid black;">
+                                                <span t-field="o.comment"/>
+                                            </td>
+                                            <td class="price_border">
+                                                <br/>
+                                                Subtotal
+                                            </td>
+                                            <td class="text-right price_border">
+                                                <br/>
+                                                <span t-field="o.amount_untaxed"/>
+                                            </td>
+                                        </tr>
+                                        <t t-foreach="o._get_tax_amount_by_group()" t-as="amount_by_group">
+                                            <tr>
+                                                <td></td>
+                                                <t t-if="len(o.tax_line_ids) == 1 and o.amount_untaxed == amount_by_group[2]">
+                                                    <td class="price_border">
+                                                        <span t-esc="amount_by_group[0]"/>
+                                                    </td>
+                                                    <td class="text-right price_border">
+                                                        <span t-esc="amount_by_group[3]"/>
+                                                    </td>
+                                                </t>
+                                                <t t-else="">
+                                                    <td class="price_border">
+                                                        <span t-esc="amount_by_group[0]"/>
+                                                        <span>&amp;nbsp;
+                                                            <span>on</span>
+                                                            <t t-esc="amount_by_group[4]"/>
+                                                        </span>
+                                                    </td>
+                                                    <td class="text-right price_border">
+                                                        <span t-esc="amount_by_group[3]"/>
+                                                    </td>
+                                                </t>
+                                            </tr>
+                                        </t>
+                                        <tr>
+                                            <td>
+                                                <td class="price_border">Total Invoice Amount</td>
+                                            </td>
+                                            <td class="text-right price_border">
+                                                <span t-field="o.amount_total"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <td class="price_border">Payment/Credit Applied</td>
+                                            </td>
+                                            <td class="text-right price_border">
+                                                <t t-if="o.state != 'draft'">
+                                                    <span t-esc="o.amount_total - o.residual"
+                                                          t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                                </t>
+                                                <t t-else="">
+                                                    <span t-esc="0.0"
+                                                          t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                                </t>
+                                            </td>
+                                        </tr>
+                                        <!--$$$$$$$$$$$$$$$$$-->
+                                        <tr>
+                                            <th class="text-center thbackgrd">Name &amp; Signature</th>
+                                            <th class="thbackgrd">Amount Due</th>
+                                            <th class="tdbackgrd text-right">
+                                                <t t-if="o.state != 'draft'">
+                                                    <span t-field="o.residual"/>
+                                                </t>
+                                                <t t-else="">
+                                                    <span t-field="o.amount_total"/>
+                                                </t>
+                                            </th>
+                                        </tr>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

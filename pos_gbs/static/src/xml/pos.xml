@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+    <t t-extend="ProductScreenWidget">
+        <t t-jquery=".content-row" t-operation="after">
+            <tr class="footer-row">
+                <td class="footer-cell">
+                    <div class="preferred-items-scroller">
+                        <div class="preferred-items scroller">
+                            <span class="placeholder-PreferredItems"/>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </t>
+    </t>
+
+    <t t-name="ProductPreferredWidget">
+        <div class="preferred-list-container">
+            <div class="product-list item-list">
+            </div>
+        </div>
+    </t>
+
+    <t t-extend="Chrome">
+        <t t-jquery=".pos-logo" t-operation="replace">
+            <img class="pos-logo" src='/logo.png'/>
+        </t>
+    </t>
+</templates>

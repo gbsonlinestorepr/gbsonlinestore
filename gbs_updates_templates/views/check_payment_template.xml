@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--**************Payment*****************-->
+        <template id="template_payment_check_gbs">
+            <div class="page">
+                <div class="row">
+                    <!--Header-->
+                    <br/>
+                    <br/>
+                    <div name="payroll_check_header" class="row col-xs-12">
+                        <!--Date-->
+                        <div name="check_number" class="text-right data">
+                            <div class="col-xs-12 text-right">
+                                <b>
+                                    <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%m/%d/%Y')"/>
+                                </b>
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <br/>
+                    </div>
+                    <!--PAY-->
+                    <div name="partner_name" class="text-center col-xs-5 name">
+                        <span t-field="o.partner_id.name"/>
+                    </div>
+                    <div name="pay_amount_number" class="pull-right col-xs-2 text-left amount-num">
+                        <!--AMOUNT-->
+                        <t t-if="o.amount">
+                            <span t-field="o.amount"/>
+                        </t>
+                    </div>
+                    <!--Body-->
+                    <div name="payroll_check_body" class="col-xs-12">
+                        <div name="amount_in_word" class="margin-amount col-xs-12 text-center">
+                            ***********<span t-esc="o.check_amount_in_words"/>***********
+                        </div>
+                        <br/>
+                        <br/>
+                        <div name="payment_check_partner_info" class="margin-amount text-center col-xs-3">
+                            <div>
+                                <div class="text-left">
+                                    <span t-field="o.partner_id.name"/>
+                                    <br/>
+                                    <span t-field="o.partner_id.street"/>
+                                    <span t-field="o.partner_id.street2"/>
+                                    <br/>
+                                    <span t-field="o.partner_id.city"/>,
+                                    <span t-field="o.partner_id.state_id"/>,
+                                    <span t-field="o.partner_id.zip"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                </div>
+            </div>
+        </template>
+
+        <template id="payment_check_details_gbs">
+            <div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <div class="col-xs-12">
+                    <div>
+                        <div>
+                            <br/>
+                            <br/>
+                            <div>
+                                <div class="text-left">
+                                    <span t-field="o.partner_id.name"/>
+                                    <br/>
+                                </div>
+                            </div>
+                            <!--Table 1-->
+                            <table class="col-xs-12">
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Type</th>
+                                    <th>Reference</th>
+                                    <th>Original Amt.</th>
+                                    <th>Balance Due</th>
+                                    <th>Discount</th>
+                                    <th>Payment</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b>
+                                            <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%m/%d/%Y')"/>
+                                        </b>
+                                    </td>
+                                    <td>
+                                        <t t-if="o.payment_type">
+                                            <span t-field="o.payment_type"/>
+                                        </t>
+                                    </td>
+                                    <td>
+                                        <t t-if="o.name">
+                                            <span t-field="o.name"/>
+                                        </t>
+                                    </td>
+                                    <td>
+                                        <t t-if="o.amount">
+                                            <span t-field="o.amount"/>
+                                        </t>
+                                    </td>
+                                    <td>
+                                        <t t-if="o.amount">
+                                            <span t-field="o.amount"/>
+                                        </t>
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+                                        <t t-if="o.amount">
+                                            <span t-field="o.amount"/>
+                                        </t>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="text-right">
+                                Check Amount:
+                                <t t-if="o.amount">
+                                    <span t-field="o.amount"/>
+                                </t>
+                            </div>
+                        </div>
+                        <!--Memo-->
+                        <div name="pay_period" class="text-center col-xs-4">
+                            <br/>
+
+                            <br/>
+                            <t t-if="o.communication">
+                                <span t-field="o.communication"/>
+                            </t>
+                        </div>
+                        <div class="clearfix mb8"/>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <!--Check Display Payment-->
+        <template id="template_payment_check_display">
+            <t t-foreach="docs" t-as="o">
+                <div class="article">
+                    <t t-call="gbs_updates_templates.template_payment_check_gbs"/>
+                </div>
+            </t>
+        </template>
+
+        <template id="check_and_copy_payment_gbs">
+            <t t-foreach="docs" t-as="o">
+                <div class="article">
+                    <t t-call="gbs_updates_templates.template_payment_check_gbs"/>
+                    <br/>
+                    <t t-call="gbs_updates_templates.payment_check_details_gbs"/>
+                    <div class="top_detail"/>
+                    <t t-call="gbs_updates_templates.payment_check_details_gbs"/>
+                </div>
+            </t>
+        </template>
+
+        <template id="payment_check_display">
+            <t t-if="res_company.detailed_payroll_check">
+                <t t-call="gbs_updates_templates.check_and_copy_payment_gbs"/>
+            </t>
+            <t t-if="not res_company.detailed_payroll_check">
+                <t t-call="gbs_updates_templates.template_payment_check_display"/>
+            </t>
+        </template>
+
+    </data>
+</openerp>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="action_account_trial_balance_pivot" model="ir.actions.act_window">
+            <field name="name">Trial Balance</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.move.line</field>
+            <field name="view_mode">pivot</field>
+            <field name="context">{'group_by':['account_id']}</field>
+        </record>
+
+        <menuitem id="menu_account_trial_balance_pivot" name="Trial Balance"
+                  parent="account.account_reports_management_menu" action="action_account_trial_balance_pivot"/>
+
+    </data>
+</openerp>

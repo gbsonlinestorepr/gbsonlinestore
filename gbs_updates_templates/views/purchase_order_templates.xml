@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_purchaseorder_document" inherit_id="purchase.report_purchaseorder_document">
+
+        <xpath expr="//div[hasclass('row','mt32','mb32')]" position="inside">
+            <div t-if="o.incoterm_id" class="col-xs-3">
+                <strong>Incoterm:</strong>
+                <p t-field="o.incoterm_id"/>
+            </div>
+        </xpath>
+
+    </template>
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <template id="assets_frontend" inherit_id="website.assets_frontend">
+        <xpath expr="link[last()]" position="after">
+            <link href="/website_gbs/static/css/screen.css" rel="stylesheet" type="text/css"/>
+            <link href="/website_gbs/static/css/dropdown_menu.css" rel="stylesheet" type="text/css"/>
+            <link href="/website_gbs/static/css/styles.css" rel="stylesheet" type="text/css"/>
+            <link href="/website_gbs/static/less/style.less" rel="stylesheet"/>
+        </xpath>
+    </template>
+
+    <template id="assets_editor" inherit_id="website.assets_editor">
+        <xpath expr="script[last()]" position="after">
+            <script type="text/javascript" src="/website_gbs/static/js/snippets.js" />
+        </xpath>
+    </template>
+</openerp>

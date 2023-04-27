@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="website_search_box" inherit_id="website.website_search_box">
+            <xpath expr="//button[hasclass('oe_search_button')]" position="attributes">
+                <attribute name="class">btn btn-default oe_search_button btn-bar-search</attribute>
+            </xpath>
+        </template>
+
+        <template id="website_search_box_gbs" inherit_id="website.website_search_box" primary="True">
+            <xpath expr="//div[hasclass('oe_search')]" position="before">
+                <div class="input-group-btn search-panel hidden-xs">
+                    <button type="button" class="btn btn-default btn-dropdown dropdown-toggle"
+                            data-toggle="dropdown">
+                        <span id="search_concept">All Categories</span>
+                        <span class="caret"></span>
+                    </button>
+                </div>
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

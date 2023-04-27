@@ -1,0 +1,24 @@
+<odoo>
+<!--    template picking_operations-->
+    <template id="new_field_picking_delivery" inherit_id="stock.report_picking">
+        <xpath expr="//th[@t-if='o.origin']" position="after">
+            <p style="color:DarkSlateBlue;">Date:_________________</p>
+        </xpath>
+        <xpath expr="//p[@t-field='o.note']" position="after">
+            <p style="color:DarkSlateBlue; margin-top: 30px; margin-left: 10px;">Name:_________________________</p>
+            <p style="color:DarkSlateBlue; margin-top: -25px; margin-left: 500px;">Signature:______________________</p>
+        </xpath>
+    </template>
+
+<!--    template delivery_slip-->
+    <template id="new_fields_delivery_slip" inherit_id="stock.report_delivery_document">
+        <xpath expr="//div[@name='customer_address']" position="after">
+            <p style="color:DarkSlateBlue;">Date:_________________</p>
+        </xpath>
+        <xpath expr="//p[@t-if='o.backorder_id']" position="after">
+            <p style="color:DarkSlateBlue; margin-top: 30px; margin-left: 10px;">Name:_________________________</p>
+            <p style="color:DarkSlateBlue; margin-top: -25px; margin-left: 500px;">Signature:______________________</p>
+        </xpath>
+    </template>
+
+</odoo>

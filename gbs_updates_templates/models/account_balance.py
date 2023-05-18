@@ -4,7 +4,7 @@ from odoo import models
 
 
 class ReportTrialBalance(models.AbstractModel):
-    _inherit = 'report.account.report_trialbalance'
+    _name = 'report.account.report_trialbalance'
 
     def _get_accounts(self, accounts, display_account):
         data_ids = super(ReportTrialBalance, self)._get_accounts(accounts, display_account)

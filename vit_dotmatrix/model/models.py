@@ -6,7 +6,8 @@ _logger = logging.getLogger(__name__)
 
 class invoice(models.Model):
     _name = 'account.invoice'
-    _inherit = 'account.invoice'
+    _inherit = 'account.move'
+   # _inherit = 'account.invoice'
 
     printer_data = fields.Text(string="Printer Data", required=False, readonly=True, )
 

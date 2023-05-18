@@ -6,7 +6,7 @@ from odoo.http import request
 from odoo.tools import ustr
 import logging
 _logger = logging.getLogger(__name__)
-from odoo.tools.pycompat import izip
+# from odoo.tools.pycompat import izip
 
 class WebsiteSale(WebsiteSale):
 

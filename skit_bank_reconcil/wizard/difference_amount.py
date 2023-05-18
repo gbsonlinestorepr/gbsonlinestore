@@ -7,7 +7,7 @@ class account_journal(models.Model):
     _inherit = 'account.journal'
         
     
-    @api.multi
+   # @api.multi
     def get_journal_dashboard_datas(self):
         currency = self.currency_id or self.company_id.currency_id
         val = super(account_journal, self).get_journal_dashboard_datas()
@@ -16,7 +16,7 @@ class account_journal(models.Model):
         return val
     
         
-    @api.multi
+   # @api.multi
     def print_report(self):
         
         return {

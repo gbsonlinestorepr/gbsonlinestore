@@ -11,7 +11,7 @@ class skit_reconcil_report(models.TransientModel):
                                     domain=[('type', '=', 'bank')],
                                     string='Journal',
                                     help="The accounting journal corresponding to this bank account.")
-    @api.multi
+   # @api.multi
     def print_report(self):
         active_ids = self.env.context.get('active_ids', [])
         journal_id = self.journal_id.id

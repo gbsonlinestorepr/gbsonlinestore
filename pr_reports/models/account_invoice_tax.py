@@ -2,7 +2,8 @@ from odoo import models, fields
 
 
 class AccountInvoiceTax(models.Model):
-    _inherit = 'account.invoice.tax'
+    _inherit = 'account.tax'
+   # _inherit = 'account.invoice.tax'
 
     invoice_state = fields.Selection(related="invoice_id.state")
     invoice_partner_id = fields.Many2one(related='invoice_id.partner_id')

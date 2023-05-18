@@ -7,7 +7,7 @@
     'website': 'www.icq24.com',
     'license': 'LGPL-3',
     'description': 'GBS payment and payroll templates',
-    'depends': ['base', 'account', 'account_check_printing', 'hr_payroll', 'l10n_pr_hr_payroll', 'purchase', 'stock',
+    'depends': ['base', 'account', 'account_check_printing', 'hr_payroll', 'purchase', 'stock',
                 'vit_dotmatrix', 'gbs_updates'],
     'data': [
         'views/assets_payroll_check.xml',

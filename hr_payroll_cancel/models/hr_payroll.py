@@ -18,13 +18,13 @@ class HrPayslip(models.Model):
         readonly=True
     )
 
-    @api.multi
+   # @api.multi
     def refund_sheet(self):
         res = super(HrPayslip, self).refund_sheet()
         self.write({'refunded_id': eval(res['domain'])[0][2][0] or False})
         return res
 
-    @api.multi
+   # @api.multi
     def action_payslip_cancel(self):
         for payslip in self:
             if payslip.refunded_id and payslip.refunded_id.state != 'cancel':

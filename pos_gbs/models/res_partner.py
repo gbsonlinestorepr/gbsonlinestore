@@ -8,7 +8,7 @@ _logger = logging.getLogger(__name__)
 class ResPartner(models.Model):
     _inherit = "res.partner"
 
-    @api.multi
+   # @api.multi
     def _get_preferred(self):
         for partner_id in self:
             products = []

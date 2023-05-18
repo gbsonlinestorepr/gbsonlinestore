@@ -9,6 +9,6 @@ class AccountInvoiceTax(models.Model):
    # invoice_partner_id = fields.Many2one(related='account.move.partner_id')
    # invoice_date = fields.Date(related='account.move.invoice_date', store=True)
 
-    amount_total = fields.Monetary(string="Tax")
-    amount = fields.Monetary(string="Tax")
-    base = fields.Monetary(string="Taxable Amount")
+    amount_total = fields.Float(string="Tax")
+   # amount = fields.Monetary(string="Tax")
+    base = fields.Float(string="Taxable Amount")

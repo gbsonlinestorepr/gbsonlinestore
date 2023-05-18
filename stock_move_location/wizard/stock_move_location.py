@@ -10,7 +10,7 @@ from odoo.fields import first
 class StockMoveLocationWizard(models.TransientModel):
     _name = "wiz.stock.move.location"
 
-    @api.multi
+   # @api.multi
     def _get_default_picking_type_id(self):
         company_id = self.env.context.get('company_id') or \
             self.env.user.company_id.id
@@ -106,7 +106,7 @@ class StockMoveLocationWizard(models.TransientModel):
             'location_dest_id': self.destination_location_id.id,
         })
 
-    @api.multi
+   # @api.multi
     def group_lines(self):
         lines_grouped = {}
         for line in self.stock_move_location_line_ids:
@@ -117,7 +117,7 @@ class StockMoveLocationWizard(models.TransientModel):
             lines_grouped[line.product_id.id] |= line
         return lines_grouped
 
-    @api.multi
+   # @api.multi
     def _create_moves(self, picking):
         self.ensure_one()
         groups = self.group_lines()
@@ -145,7 +145,7 @@ class StockMoveLocationWizard(models.TransientModel):
             "location_move": True,
         }
 
-    @api.multi
+   # @api.multi
     def _create_move(self, picking, lines):
         self.ensure_one()
         move = self.env["stock.move"].create(
@@ -155,7 +155,7 @@ class StockMoveLocationWizard(models.TransientModel):
             line.create_move_lines(picking, move)
         return move
 
-    @api.multi
+   # @api.multi
     def action_move_location(self):
         self.ensure_one()
         picking = self._create_picking()

@@ -100,7 +100,7 @@ class StockMoveLocationWizardLine(models.TransientModel):
             )
         return True
 
-    @api.multi
+   # @api.multi
     def _get_move_line_values(self, picking, move):
         self.ensure_one()
         print ("_____self._get_available_quantity()________",self._get_available_quantity() )

@@ -8,7 +8,7 @@ from odoo.exceptions import UserError, AccessError
 class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
 
-    @api.multi
+   # @api.multi
     @api.onchange('product_id')
     def product_id_change(self):
         if not self.product_id:

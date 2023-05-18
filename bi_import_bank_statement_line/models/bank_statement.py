@@ -41,7 +41,7 @@ class account_bank_statement_wizard(models.TransientModel):
     file = fields.Binary('File')
     file_opt = fields.Selection([('excel', 'Excel'), ('csv', 'CSV')])
 
-    @api.multi
+   # @api.multi
     def import_file(self):
         if not self.file:
            raise Warning('Please Select File')
@@ -112,7 +112,7 @@ class account_bank_statement_wizard(models.TransientModel):
         return res
 
     #
-    @api.multi
+   # @api.multi
     def _create_statement_lines(self, val):
         account_bank_statement_line_obj = self.env['account.bank.statement.line']
         partner_id = self._find_partner(val.get('partner'))

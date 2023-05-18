@@ -9,7 +9,6 @@
                 name="gbs_updates_templates.payment_check_display"
                 file="gbs_updates_templates.payment_check_display"
                 menu="True"
-                paperformat="l10n_pr_hr_payroll.paperformat_check_payroll"
         />
     </data>
 </odoo>

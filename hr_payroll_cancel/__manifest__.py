@@ -14,7 +14,7 @@
     "website": "https://github.com/OCA/hr",
     "license": "AGPL-3",
     "depends": [
-        "account_cancel",
+        # "account_cancel",
         "hr_payroll_account",
     ],
     "data": [

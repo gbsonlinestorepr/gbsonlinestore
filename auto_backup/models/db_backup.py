@@ -40,14 +40,14 @@ def execute(connector, method, *args):
 class db_backup(models.Model):
     _name = 'db.backup'
 
-    @api.multi
+   # @api.multi
     def get_db_list(self, host, port, context={}):
         uri = 'http://' + host + ':' + port
         conn = xmlrpclib.ServerProxy(uri + '/xmlrpc/db')
         db_list = execute(conn, 'list')
         return db_list
 
-    @api.multi
+   # @api.multi
     def _get_db_name(self):
         dbName = self._cr.dbname
         return dbName
@@ -86,7 +86,7 @@ class db_backup(models.Model):
     email_to_notify = fields.Char('E-mail to notify',
                                   help='Fill in the e-mail where you want to be notified that the backup failed on the FTP.')
 
-    @api.multi
+   # @api.multi
     def _check_db_exist(self):
         self.ensure_one()
 
@@ -97,7 +97,7 @@ class db_backup(models.Model):
 
     _constraints = [(_check_db_exist, _('Error ! No such database exists!'), [])]
 
-    @api.multi
+   # @api.multi
     def test_sftp_connection(self, context=None):
         self.ensure_one()
 

@@ -9,7 +9,7 @@
     'description': """""",
     'depends': ['website', 'base', 'portal', 'website_sale', 'sales_team', 'account', 'base_iban'],
     'installable': True,
-    'data': ['views/website_header.xml',
+    'data': [#'views/website_header.xml',
              'views/assets_frontend.xml',
              'views/website_search.xml',
              'views/website_sale_templates.xml',

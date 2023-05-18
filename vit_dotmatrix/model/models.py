@@ -5,7 +5,7 @@ import logging
 _logger = logging.getLogger(__name__)
 
 class invoice(models.Model):
-    _name = 'account.invoice'
+   # _name = 'account.invoice'
     _inherit = 'account.move'
    # _inherit = 'account.invoice'
 

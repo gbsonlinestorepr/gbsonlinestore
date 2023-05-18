@@ -10,18 +10,18 @@ class invoice(models.Model):
 
     printer_data = fields.Text(string="Printer Data", required=False, readonly=True, )
 
-    @api.multi
+   # @api.multi
     def generate_printer_data(self):
         tpl = self.env['mail.template'].search([('name', '=', 'Dot Matrix Invoice')])
         data = tpl.render_template(tpl.body_html, 'account.invoice', self.id, post_process=False)
         self.printer_data = data
 
-    @api.multi
+   # @api.multi
     def action_invoice_cancel(self):
         self.printer_data=''
         return super(invoice, self).action_cancel()
 
-    @api.multi
+   # @api.multi
     def action_invoice_open(self):
         res=super(invoice, self).action_invoice_open()
         self.generate_printer_data()
@@ -34,14 +34,14 @@ class purchase(models.Model):
 
     printer_data = fields.Text(string="Printer Data", required=False, readonly=True, )
 
-    @api.multi
+   # @api.multi
     def generate_printer_data(self):
         tpl = self.env['mail.template'].search([('name', '=', 'Dot Matrix PO')])
         data = tpl.render_template(tpl.body_html, 'purchase.order', self.id, post_process=False)
         self.printer_data = data
 
 
-    @api.multi
+   # @api.multi
     def button_confirm(self):
         res = super(purchase, self).button_confirm()
         self.generate_printer_data()
@@ -54,20 +54,20 @@ class picking(models.Model):
 
     printer_data = fields.Text(string="Printer Data", required=False, readonly=True, )
 
-    @api.multi
+   # @api.multi
     def generate_printer_data(self):
         tpl = self.env['mail.template'].search([('name', '=', 'Dot Matrix Picking')])
         data = tpl.render_template(tpl.body_html, 'stock.picking', self.id)
         self.printer_data = data
 
 
-    @api.multi
+   # @api.multi
     def action_confirm(self):
         res = super(picking, self).action_confirm()
         #self.generate_printer_data()
         return res
 
-    @api.multi
+   # @api.multi
     def action_cancel(self):
         res = super(picking, self).action_cancel()
         for i in self:
@@ -80,19 +80,19 @@ class sale(models.Model):
 
     printer_data = fields.Text(string="Printer Data", required=False, readonly=True, )
 
-    @api.multi
+   # @api.multi
     def generate_printer_data(self):
         tpl = self.env['mail.template'].search([('name', '=', 'Dot Matrix SO')])
         data = tpl.render_template(tpl.body_html, 'sale.order', self.id)
         self.printer_data = data
 
-    @api.multi
+   # @api.multi
     def action_confirm(self):
         res = super(sale, self).action_confirm()
         self.generate_printer_data()
         return res
 
-    @api.multi
+   # @api.multi
     def action_cancel(self):
         res = super(sale, self).action_cancel()
         self.printer_data=''
